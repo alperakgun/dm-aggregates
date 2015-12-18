@@ -21,13 +21,14 @@ module DataMapper
         DataMapper::Query::Operator.new(self, :sum)
       end
       
-      def count_distinct(property, value)
-        value.to_i
+      
+      def sum_distinct
+	      DataMapper::Query::Operator.new(self, :sum_distinct)
       end
-
-      def sum_distinct(property, value)
-        property.load(value)
-      end      
+      
+      def count_distinct
+	      DataMapper::Query::Operator.new(self, :count_distinct)
+      end    
     end # module Operators
   end # module Aggregates
 end # module DataMapper

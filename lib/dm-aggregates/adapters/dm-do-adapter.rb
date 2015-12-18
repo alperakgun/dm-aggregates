@@ -60,7 +60,15 @@ module DataMapper
       def sum(property, value)
         property.load(value)
       end
+      
+      def count_distinct(property, value)
+        value.to_i
+      end
 
+      def sum_distinct(property, value)
+        property.load(value)
+      end
+      
       chainable do
         def property_to_column_name(property, qualify)
           case property
@@ -83,16 +91,16 @@ module DataMapper
           property_to_column_name(property, qualify)
         end
 
-        function_name = case aggregate_function
-          when :count then 'COUNT'
-          when :min   then 'MIN'
-          when :max   then 'MAX'
-          when :avg   then 'AVG'
-          when :sum   then 'SUM'
+        case aggregate_function
+          when :count then "COUNT(#{column_name})"
+          when :sum   then "SUM(#{column_name})"
+          when :min   then "MIN(#{column_name})"
+          when :max   then "MAX(#{column_name})"
+          when :avg   then "AVG(#{column_name})"
+          when :count_distinct then "COUNT(DISTINCT(#{column_name}))"
+          when :sum_distinct   then "SUM(DISTINCT(#{column_name}))"
           else raise "Invalid aggregate function: #{aggregate_function.inspect}"
         end
-
-        "#{function_name}(#{column_name})"
       end
 
     end # class DataObjectsAdapter

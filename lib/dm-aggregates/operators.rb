@@ -20,6 +20,14 @@ module DataMapper
       def sum
         DataMapper::Query::Operator.new(self, :sum)
       end
+      
+      def count_distinct(property, value)
+        value.to_i
+      end
+
+      def sum_distinct(property, value)
+        property.load(value)
+      end      
     end # module Operators
   end # module Aggregates
 end # module DataMapper

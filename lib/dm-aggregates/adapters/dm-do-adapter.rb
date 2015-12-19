@@ -98,7 +98,6 @@ module DataMapper
           when :max   then "MAX(#{column_name})"
           when :avg   then "AVG(#{column_name})"
           when :count_distinct then "COUNT(DISTINCT(#{column_name}))"
-          when :sum_distinct   then "SUM(DISTINCT(#{column_name}))"
           else raise "Invalid aggregate function: #{aggregate_function.inspect}"
         end
       end

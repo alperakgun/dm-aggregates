@@ -65,9 +65,6 @@ module DataMapper
         value.to_i
       end
 
-      def sum_distinct(property, value)
-        property.load(value)
-      end
       
       chainable do
         def property_to_column_name(property, qualify)

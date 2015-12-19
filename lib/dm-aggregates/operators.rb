@@ -21,11 +21,6 @@ module DataMapper
         DataMapper::Query::Operator.new(self, :sum)
       end
       
-      
-      def sum_distinct
-	      DataMapper::Query::Operator.new(self, :sum_distinct)
-      end
-      
       def count_distinct
 	      DataMapper::Query::Operator.new(self, :count_distinct)
       end    

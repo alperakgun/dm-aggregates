@@ -26,7 +26,7 @@ platforms :mri_18 do
   group :quality do
 
     gem 'rcov',      '~> 0.9.10'
-    gem 'yard',      '~> 0.7.2'
+    gem 'yard',      '~> 0.9.11'
     gem 'yardstick', '~> 0.4'
 
   end
